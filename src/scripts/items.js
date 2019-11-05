@@ -5,7 +5,11 @@
 const create = function (data){
     return{
         id: cuid(),
-
+        title: data.title,
+        rating: data.rating,
+        url: data.url,
+        description: data.description,
+        expanded: false
     }
 }
 

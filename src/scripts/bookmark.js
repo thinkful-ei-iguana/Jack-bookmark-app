@@ -30,25 +30,33 @@ function handleFilterChanged(){
 
 //puts all the items in outputItems and puts them into the html
 function render(){
-    
     //puts all the elements into outputItems, filtering items with a rating lower than the filter rating
-    let outputItems = [...store.items].filter(item => item.rating >= store.filter);
-    console.log(outputItems);
+    let outputItems = [...store.store.items].filter(item => item.rating >= store.store.filter);
     //takes the filtered list and turns them into html formatted elements
     let outputString = htmlifyItems(outputItems);
+
     $('main').html(outputString);
-
-
 }
+
 
 function htmlifyItems(data){
     let final = "<ul>";
     data.forEach(element => {
-        final += `<li>
-        <p>${element.title}</p>
-        <button class="delete-item">Delete</button>
-        <button class="expand-item">Expand</button>
-        </li>`
+        if(element.expanded){
+            final += `<li>
+            <p>${element.title}</p>
+            <a href="${element.url}">${element.url}</a>
+            <p>${element.description}</p>
+            <button class="delete-item">Delete</button>
+            <button class="expand-item">Expand</button>
+            </li>`;
+        } else {
+            final += `<li>
+            <p>${element.title}</p>
+            <button class="delete-item">Delete</button>
+            <button class="expand-item">Expand</button>
+            </li>`;
+        }
     });
     final += "</ul>";
     return final;
