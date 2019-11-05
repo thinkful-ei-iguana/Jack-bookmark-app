@@ -5,7 +5,7 @@ import item from './items.js';
 
 const outputItems = [];
 
-//when the button is clicked, renders an Adding form in order to take in data
+//when the button is clicked, displays an adding form 
 function handleAddItemClicked(){
     $('header').on('click', '.add-new', event=>{
         console.log('added clicked');
@@ -13,9 +13,29 @@ function handleAddItemClicked(){
 
 }
 
+function renderAddItem(){
+    $('main').html(
+        `<form> 
+        title (text)
+        url (text)
+        description (text)
+        rating (dropdown menu)    
+        </form>`);
+}
+
 //when a expand button is clicked, expand that element
 function handleExpandClicked(){
-    console.log('expand clicked runs');
+    $('main').on('click', '.expand-item', event =>{
+        const id = getItemIdFromElement(event.currentTarget);
+        store.toggleExpandById(id);
+        render();
+    })
+}
+
+function getItemIdFromElement(item){
+    return $(item)
+    .closest('.bookmark')
+    .attr('id');
 }
 
 //when a remove button is clicked, remove that button
@@ -50,18 +70,22 @@ function htmlifyItems(data){
     let final = "<ul>";
     data.forEach(element => {
         if(element.expanded){
-            final += `<li>
+            final += `<li class="bookmark" id="${element.id}">
             <p>${element.title}</p>
             <a href="${element.url}">${element.url}</a>
             <p>${element.description}</p>
-            <button class="delete-item">Delete</button>
-            <button class="expand-item">Expand</button>
+            <div class="item-controls">
+                <button class="delete-item">Delete</button>
+                <button class="expand-item">Expand</button>
+            </div>
             </li>`;
         } else {
-            final += `<li>
+            final += `<li class="bookmark" id=${element.id}>
             <p>${element.title}</p>
-            <button class="delete-item">Delete</button>
-            <button class="expand-item">Expand</button>
+            <div class="item-controls">
+                <button class="delete-item">Delete</button>
+                <button class="expand-item">Expand</button>
+            </div>
             </li>`;
         }
     });

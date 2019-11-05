@@ -24,17 +24,22 @@ const store ={
 };
 
 function findById(id){
-    return this.store.items.find(currentItem => currentItem.id === id);
+    return store.items.find(currentItem => currentItem.id === id);
 }
 
 function addItem(item){
     this.store.items.push(item);
 }
 
+function toggleExpandById(id){
+    let item = findById(id);
+    item.expanded = !item.expanded;
+}
 
 
 export default {
     store,
     findById,
-    addItem
+    addItem,
+    toggleExpandById
 }
