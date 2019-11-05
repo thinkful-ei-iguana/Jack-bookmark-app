@@ -5,9 +5,9 @@ import item from './items.js';
 
 const outputItems = [];
 
-//takes in data and turns it into a bookmark
+//when the button is clicked, renders an Adding form in order to take in data
 function handleAddItemClicked(){
-    $('main').on('click', '.add-new', event=>{
+    $('header').on('click', '.add-new', event=>{
         console.log('added clicked');
     });
 
@@ -23,9 +23,15 @@ function handleRemoveClicked(){
     console.log('handle added clicked runs');
 }
 
-//when filter is changed, filter items we dont want to see
+//when filter is changed, filter items we dont want to see and rerender the page
 function handleFilterChanged(){
-    console.log('filter clicked runs');
+    $('.filter').change( e => {
+       e.preventDefault();
+       store.store.filter =  $(e.currentTarget).children("option:selected").val()
+       render();
+    });
+
+    
 }
 
 //puts all the items in outputItems and puts them into the html
@@ -36,6 +42,7 @@ function render(){
     let outputString = htmlifyItems(outputItems);
 
     $('main').html(outputString);
+    //alert('rendered');
 }
 
 

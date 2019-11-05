@@ -27,8 +27,14 @@ function findById(id){
     return this.store.items.find(currentItem => currentItem.id === id);
 }
 
+function addItem(item){
+    this.store.items.push(item);
+}
+
+
 
 export default {
     store,
     findById,
+    addItem
 }
