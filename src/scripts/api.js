@@ -12,9 +12,11 @@ function addItem(){
 
 //deletes an item from the api
 function deleteItem(){
-    
+
 }
 
-export{
-
+export default{
+    getItems,
+    addItem,
+    deleteItem
 }

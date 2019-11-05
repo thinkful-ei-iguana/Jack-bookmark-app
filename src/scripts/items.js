@@ -1,4 +1,4 @@
-import cuid from 'cuid';
+//import cuid from 'cuid';
 
 
 //takes in data and returns an parameters set to those values
