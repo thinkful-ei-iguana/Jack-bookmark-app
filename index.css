@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
   }
+  header{
+    text-align: center;
+  }
   body {
     font-family: Arial, sans-serif;
   }
@@ -32,8 +35,7 @@
     margin: .5rem 0;
     padding: 0;
   }
-  
-  .counter {
-    color: red;
-    font-weight: 700;
+
+  li{
+    text-align: center;
   }

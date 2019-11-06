@@ -30,6 +30,7 @@ function addItem(data){
     let jsonFormat = serializeJson(data);
     api.addItem(jsonFormat)
     .then(res =>{ 
+        console.log(res);
         store.addItem(res);
         render();
     }); 
@@ -107,7 +108,7 @@ function htmlAddItem(){
             <input type="url" name="url" id="url" class="add-item-form" required>
             <label for="desc">Decription:</label>
             <input type="text" name="desc" id="desc" class="add-item-form" required>
-            <label for="range">Range(between 1-5):</label>
+            <label for="rating">Range(between 1-5):</label>
             <input type="number" min="1" max="5" name="rating" id="rating" class="add-item-form" required>
             <button type="button" class="cancel-add">Cancel</button>
             <button type="submit" class="submit-add">Submit</button>
@@ -129,7 +130,7 @@ function htmlifyItems(data){
             final += `<li class="bookmark" id="${element.id}">
             <p>${element.title}</p>
             <a href="${element.url}">${element.url}</a>
-            <p>${element.description}</p>
+            <p>${element.desc}</p>
             <div class="item-controls">
                 <button class="delete-item">Delete</button>
                 <button class="expand-item">Expand</button>
