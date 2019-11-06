@@ -1,34 +1,25 @@
-import item from "./items.js";
 
-const store ={
-    items : [{
-        id: 'x56w',
-        title: 'Title 1',
-        rating: 3,
-        url: 'http://www.title1.com',
-        description: 'lorem ipsum dolor sit',
-        expanded: false
-      },
-      {
-        id: '6ffw',
-        title: 'Title 2',
-        rating: 5,
-        url: 'http://www.title2.com',
-        description: 'dolorum tempore deserunt',
-        expanded: true
-      } ],
-    adding: false,
-    error: null,
-    filter: 0
 
-};
+    let items = [];
+    let adding= false;
+    let error= null;
+    let filter= 0;
+
 
 function findById(id){
-    return store.items.find(currentItem => currentItem.id === id);
+    return items.find(currentItem => currentItem.id === id);
 }
 
 function addItem(item){
-    this.store.items.push(item);
+    //console.log('addItem is ' + item);
+    //console.log('addItem store is ' + items);
+    item.expanded = false;
+    this.items.push(item);
+    //console.log('addItem store is ' + items);
+}
+
+function findAndRemove(id){
+    this.items = this.items.filter(currentItem => currentItem.id !== id);
 }
 
 function toggleExpandById(id){
@@ -38,8 +29,14 @@ function toggleExpandById(id){
 
 
 export default {
-    store,
+    items,
+    adding, 
+    error, 
+    filter,
     findById,
     addItem,
-    toggleExpandById
+    toggleExpandById,
+    findAndRemove
+    /*makeStore,
+    clear*/
 }

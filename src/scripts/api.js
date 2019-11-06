@@ -42,13 +42,22 @@ function getItems(){
 }
 
 //posts an item at the end of the api
-function addItem(){
-    console.log('api.getItems runs');
+function addItem(data){
+    //console.log('api.getItems runs');
+    return listApiFetch(`${BASE_URL}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: data
+    });
+    //fetch post 
 }
 
 //deletes an item from the api
-function deleteItem(){
-    console.log('api.getItems runs');
+function deleteItem(id){
+    //console.log("url is " + BASE_URL +"/"+ id);
+    return listApiFetch(BASE_URL + "/"+ id, {
+        method: 'DELETE'
+    });
 }
 
 export default{
