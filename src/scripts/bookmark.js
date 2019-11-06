@@ -18,8 +18,6 @@ function handleAddSubmit(){
     $('#new-item').submit( event =>{
         event.preventDefault();
         let formElement = $('#new-item')[0];
-        //console.log(formElement);
-        //alert($(event));
         addItem(formElement);
         
         store.adding = false;
@@ -30,7 +28,6 @@ function handleAddSubmit(){
 //adds item to api, store gets the item from the api and adds it to local store
 function addItem(data){
     let jsonFormat = serializeJson(data);
-    //console.log(jsonFormat);
     api.addItem(jsonFormat)
     .then(res =>{ 
         store.addItem(res);
@@ -64,8 +61,6 @@ function getItemIdFromElement(item){
 //when a remove button is clicked, remove that button
 function handleRemoveClicked(){
     $('main').on('click', '.delete-item', event =>{
-        console.log('delete clicked');
-        //console.log(getItemIdFromElement(event.currentTarget));
         const id = getItemIdFromElement(event.currentTarget);
         api.deleteItem(id)
             .then(res=> res.json)
@@ -161,7 +156,6 @@ function htmlifyItems(data){
 function handleAddCancel(){
     $('main').on('click', '.cancel-add', event =>{
         event.preventDefault();
-        console.log('cancel runs');
         store.adding = false;
         render();
     });

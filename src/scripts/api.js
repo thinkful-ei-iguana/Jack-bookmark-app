@@ -37,13 +37,11 @@ const listApiFetch = function (...args) {
 
 //returns all items in the api as an array of json Objects
 function getItems(){
-    //console.log('api.getItems runs');
     return listApiFetch(`${BASE_URL}`);
 }
 
 //posts an item at the end of the api
 function addItem(data){
-    //console.log('api.getItems runs');
     return listApiFetch(`${BASE_URL}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -54,7 +52,6 @@ function addItem(data){
 
 //deletes an item from the api
 function deleteItem(id){
-    //console.log("url is " + BASE_URL +"/"+ id);
     return listApiFetch(BASE_URL + "/"+ id, {
         method: 'DELETE'
     });

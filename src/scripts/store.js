@@ -11,11 +11,8 @@ function findById(id){
 }
 
 function addItem(item){
-    //console.log('addItem is ' + item);
-    //console.log('addItem store is ' + items);
     item.expanded = false;
     this.items.push(item);
-    //console.log('addItem store is ' + items);
 }
 
 function findAndRemove(id){
