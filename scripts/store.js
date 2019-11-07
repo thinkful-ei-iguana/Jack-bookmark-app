@@ -1,5 +1,3 @@
-
-
     let items = [];
     let adding= false;
     let error= null;
@@ -7,7 +5,7 @@
 
 
 function findById(id){
-    return items.find(currentItem => currentItem.id === id);
+    return this.items.find(currentItem => currentItem.id === id);
 }
 
 function addItem(item){
@@ -20,7 +18,7 @@ function findAndRemove(id){
 }
 
 function toggleExpandById(id){
-    let item = findById(id);
+    let item = this.findById(id);
     item.expanded = !item.expanded;
 }
 
