@@ -1,41 +1,90 @@
-*  {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  header{
-    text-align: center;
-  }
-  body {
-    font-family: Arial, sans-serif;
-  }
-  form, main {
-    padding: 2.5rem;
-    width: 30rem;
-    margin: 0 auto;
-  }
-  label {
-    display: inline-block;
-    width: 6rem;
-    font-size: 1rem;
-  }
-  input {
-    display: inline-block;
-    width: 18.6rem;
-    padding: 3px;
-    font-size: 1rem;
-  }
-  input[type="submit"] {
-    -webkit-appearance: none;
-    float: right;
-    margin-top: .7rem;
-    font-size: 1rem;
-  }
-  div {
-    margin: .5rem 0;
-    padding: 0;
-  }
+*{
+  /*box-sizing: border-box;*/
+  overflow: auto;
+}
 
-  li{
-    text-align: center;
-  }
+html{
+  width:100%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: #002a15;
+  margin:0;
+  background:cover;
+  background-color: pink;
+}
+
+li{
+  list-style-type: none;
+  display: block;
+  box-shadow: 0px 0px 3px #aaa;
+  color: pink;
+  padding-bottom: 5px;
+  align-self: left;
+  text-align: center;
+  background-color: #002a15;
+  margin-bottom: 10px;
+  /*width: 40%;
+  margin-left: 30%;
+  margin-right: 30%*/
+}
+
+ul{
+  padding-inline-start: 0;
+}
+
+p {
+  display: block;
+}
+
+a{
+  color: white;
+}
+
+form{
+  background-color: #002a15;
+  color: pink;
+  padding: 20px 0;
+}
+
+.manipluation-area{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+}
+
+.item-content label{
+  display: inline-block;
+  width: 100px;
+}
+
+
+.button-area{
+  width: 40%;
+  margin-left: 30%;
+  margin-right: 30%
+}
+
+.item-content {
+  /*display: block;*/
+  margin:auto;
+  width: 50%;
+}
+
+/*.item-content label{
+  width: 50px;
+}*/
+
+main input{
+  display: inline-block;
+  width: 150px;
+  margin-bottom: 5px;
+}
+
+
+
+h1{
+  text-align: center;
+}

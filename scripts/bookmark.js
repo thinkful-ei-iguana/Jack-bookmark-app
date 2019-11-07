@@ -47,6 +47,7 @@ function serializeJson(form) {
 //when a expand button is clicked, expand that element
 function handleExpandClicked(){
     $('main').on('click', '.expand-item', event =>{
+        console.log('expand clicked');
         const id = getItemIdFromElement(event.currentTarget);
         store.toggleExpandById(id);
         render();
@@ -102,19 +103,28 @@ function render(){
 function htmlAddItem(){
     $('main').html(
         `<form id="new-item"> 
+            <div class="item-content">
             <label for="title">Name:</label>
             <input type="text" name="title" id="title" class="add-item-form" required>
+            </div>
+            <div class="item-content">
             <label for="url">Url:</label>
             <input type="url" name="url" id="url" class="add-item-form" required>
+            </div>
+            <div class="item-content">
             <label for="desc">Decription:</label>
             <input type="text" name="desc" id="desc" class="add-item-form" required>
-            <label for="rating">Range(between 1-5):</label>
+            </div>
+            <div class="item-content">
+            <label for="rating">Range(1-5):</label>
             <input type="number" min="1" max="5" name="rating" id="rating" class="add-item-form" required>
+            </div>
+            <div class="button-area">
             <button type="button" class="cancel-add">Cancel</button>
             <button type="submit" class="submit-add">Submit</button>
+            </div>
         </form>`
         );
-        //debugger;
         handleAddSubmit();
         handleAddCancel();
 }
@@ -131,6 +141,7 @@ function htmlifyItems(data){
             <p>${element.title}</p>
             <a href="${element.url}">${element.url}</a>
             <p>${element.desc}</p>
+            <p class="rating">Rating: ${element.rating}</p>
             <div class="item-controls">
                 <button class="delete-item">Delete</button>
                 <button class="expand-item">Expand</button>
@@ -138,11 +149,12 @@ function htmlifyItems(data){
             </li>`;
         } else {
             final += `<li class="bookmark" id=${element.id}>
-            <p>${element.title}</p>
+            <p class="title">${element.title}</p>
+            <p class="rating">Rating: ${element.rating}</p>
             <div class="item-controls">
                 <button class="delete-item">Delete</button>
                 <button class="expand-item">Expand</button>
-            </div>
+            <div>
             </li>`;
         }
     });
@@ -170,8 +182,7 @@ handleFilterChanged();
 handleRemoveClicked();
 handleExpandClicked();
 handleAddItemClicked();
-//handleAddSubmit();
-//handleAddCancel();
+
 }
 
 export default{
